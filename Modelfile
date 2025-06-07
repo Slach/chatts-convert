@@ -1,0 +1,10 @@
+FROM ./chatts-14b-q8_0.gguf
+PARAMETER num_ctx 4096
+PARAMETER num_gqa 8
+PARAMETER rope_freq_base 1000000
+PARAMETER rope_freq_scale 0.25
+TEMPLATE """{{ if .System }}<|im_start|>system
+{{ .System }}<|im_end|>
+{{ end }}{{ .Prompt }}<|im_start|>assistant
+"""
+SYSTEM """You are ChatTS-14B, a helpful AI assistant created by ByteDance Research."""

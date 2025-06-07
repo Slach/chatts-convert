@@ -18,8 +18,14 @@ git lfs install
 git clone https://huggingface.co/bytedance-research/ChatTS-14B
 cd ChatTS-14B || exit
 
+# Create and activate virtual environment
+echo "Creating Python virtual environment..."
+python3 -m venv .venv
+source .venv/bin/activate
+
 # Install required Python packages
 echo "Installing conversion dependencies..."
+pip install --upgrade pip
 pip install torch transformers sentencepiece llama-cpp-python
 
 # Convert to GGUF format with 8-bit quantization
